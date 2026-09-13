@@ -1,0 +1,12 @@
+# User-supplied source material
+source/**
+!source/.gitkeep
+
+# Generated BA results
+results/**
+!results/review_results_docs/
+!results/review_results_docs/.gitkeep
+!results/prepared_functional_design_docs/
+!results/prepared_functional_design_docs/.gitkeep
+!results/prepared_requirements_docs/
+!results/prepared_requirements_docs/.gitkeep
