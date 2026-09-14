@@ -16,7 +16,7 @@ An Enhancement Release Note must contain `Description` and `Benefit Note`. An `I
 
 The Description should include:
 
-1. Identification and location of the Enhancement in the past tense, stating that the system `was enhanced`. If the available menu options and suboptions do not sufficiently define the location, include additional location information. Do not replace `was enhanced` with `has been improved`.
+1. Identification of the enhanced functionality in the past tense, stating that it `was enhanced`. If the functionality cannot be inferred, use the applicable menu location, application entry, or location/submenu. Do not replace `was enhanced` with `has been improved`.
 2. One or more past-tense sentences that clearly identify and describe the Enhancement.
 
 ### Format
@@ -27,13 +27,17 @@ The Description should include:
 - `[2]`: submenu, application location, or functionality name.
 - `[3]`: type of enhanced functionality.
 
+Use the same selected release note subject for `[1]` and `[2]`. Prefer functionality names as subjects. Use menu locations or application entries only when a functionality name cannot be inferred. If multiple functionalities are identified, write exactly one Description paragraph for each functionality. If one functionality includes multiple improvements or capabilities, still write one Description paragraph for that functionality. Do not split a functionality into separate paragraphs by screen or location.
+
+When subject clarification is needed, ask the user to choose one or more release note subjects. Each selected subject produces one Description paragraph. Suggested subjects should be functionality-based first and location-based only when functionality cannot be inferred. The user may provide custom subject values.
+
 ### Examples
 
-> The Results were enhanced. The Results Tasklist entry now provides the ability to display the Order-level User Defined Fields panel on the Tasklist Details view when the tasklist template has User Defined Fields with the `Display Separately` flag marked.
+> The Results Tasklist entry was enhanced. The Results Tasklist entry now provides the ability to display the Order-level User Defined Fields panel on the Tasklist Details view when the tasklist template has User Defined Fields with the `Display Separately` flag marked.
 
-> The SoftMedia system was enhanced by adding the ability to assign systems to a Category and then group Category Setup by systems.
+> The SoftMedia system was enhanced. The SoftMedia system now provides the ability to assign systems to a Category and group Category Setup by systems.
 
-> The Signout Result Entry was enhanced. The Preview Form now provides the ability to modify the gross section.
+> The Signout Result Entry was enhanced. The Signout Result Entry now provides the ability to modify the gross section.
 
 ### 1.1.1 Benefit Note
 
