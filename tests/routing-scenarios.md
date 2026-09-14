@@ -177,3 +177,45 @@ These are manual behavioral checks. Run them with the `BA Assistant` agent expli
 - **Expected primary skill:** None until the user accepts the supported scope
 - **Expected behavior:** Explain that only BA-level Functional Design Documents are currently supported and offer to create that document instead.
 - **Prohibited behavior:** Routing automatically to `write-functional-design` or inventing technical design details.
+
+## Scenario 24: Navigator Requirement ID Lookup
+
+- **Precondition:** Navigator MCP is available in the current Copilot session.
+- **User request:** `Find requirement 32212.`
+- **Expected behavior:** Apply `.github/agent-rules/navigator-mcp.md`; normalize the partial ID to `DA-LIS-FR-32212IS` and `DA-LIS-FR-32212IT`; perform ID lookup; return exact full ID matches first, then normalized candidate matches, in the standard `ID | Name | Description | Rev | Status | Created | Modified` table.
+- **Prohibited behavior:** Treating `32212` as keyword-only search, omitting normalized candidates, exposing raw Navigator output, or inventing missing fields.
+
+## Scenario 25: Navigator ID Lookup with Keyword Disambiguation
+
+- **Precondition:** Navigator MCP is available in the current Copilot session.
+- **User request:** `Find requirement 32212 for specimen collection.`
+- **Expected behavior:** Apply `.github/agent-rules/navigator-mcp.md`; perform ID lookup before keyword handling; use `specimen collection` only to rank or disambiguate `DA-LIS-FR-32212IS` and `DA-LIS-FR-32212IT` candidate results; return requirement records in the standard table.
+- **Prohibited behavior:** Replacing ID lookup with keyword search, returning unrelated keyword matches when an ID match exists, or exposing raw Navigator output.
+
+## Scenario 26: Navigator Keyword Requirement Lookup
+
+- **Precondition:** Navigator MCP is available in the current Copilot session.
+- **User request:** `Find requirements related to specimen collection.`
+- **Expected behavior:** Apply `.github/agent-rules/navigator-mcp.md`; perform keyword search because no ID-like value is provided; return the most relevant requirement records first in the standard `ID | Name | Description | Rev | Status | Created | Modified` table; return at most 30 results.
+- **Prohibited behavior:** Asking the user to provide requirement text before searching, inventing requirement records, returning more than 30 results, or exposing raw Navigator output.
+
+## Scenario 27: Navigator Unavailable
+
+- **Precondition:** Navigator MCP is not available in the current Copilot session, and no requirement text is available in the current conversation context or selected source.
+- **User request:** `Find requirement DA-LIS-FR-32212IS.`
+- **Expected behavior:** Apply `.github/agent-rules/navigator-mcp.md`; state that Navigator is not available in the current Copilot session and requirement text is not available in context/source.
+- **Prohibited behavior:** Adding Navigator configuration, pretending lookup was performed, asking the user to install dependencies as part of the project, or inventing requirement details.
+
+## Scenario 28: Navigator Raw Output Normalization
+
+- **Precondition:** Navigator MCP is available and returns raw requirement data with fields such as `id`, `title`, `text`, `revision`, `state`, `createdAt`, and `updatedAt`.
+- **User request:** `Find requirement DA-LIS-FR-32212IS.`
+- **Expected behavior:** Normalize raw Navigator data into the standard `ID | Name | Description | Rev | Status | Created | Modified` table; map obvious semantic equivalents; use `Not available` for missing fields.
+- **Prohibited behavior:** Returning raw MCP JSON or tool output as the final answer, inferring missing values from unrelated metadata, or omitting the standard table.
+
+## Scenario 29: Navigator Explicit Raw Output Request
+
+- **Precondition:** Navigator MCP is available and returns raw output.
+- **User request:** `Find requirement DA-LIS-FR-32212IS and show the raw Navigator output.`
+- **Expected behavior:** Apply `.github/agent-rules/navigator-mcp.md`; show the relevant raw Navigator output as-is because the user explicitly requested raw output.
+- **Prohibited behavior:** Hiding the raw output, rewriting raw output into only the standard table, or adding unsupported fields.

@@ -22,6 +22,7 @@ When information conflicts, use the following priority order unless a project de
 | `.github/agent-rules/requirement-input-handling.md` | Requirement input and evidence boundary | Active |
 | `.github/agent-rules/source-selection.md` | User source selection and result-path mapping | Active |
 | `.github/agent-rules/document-output.md` | Generated document output policy | Active |
+| `.github/agent-rules/navigator-mcp.md` | Navigator requirement lookup and result normalization | Active |
 
 The `req-review` skill must use `docs/requirements-writing-guideline.md` for every requirements review.
 
@@ -34,6 +35,8 @@ The `write-functional-design` skill must use `docs/functional-design-writing-gui
 Every workflow consuming requirement text must use `.github/agent-rules/requirement-input-handling.md`.
 
 Every workflow consuming requirements or process material must apply `.github/agent-rules/source-selection.md` when the source is not already explicit.
+
+Requirement lookup through Navigator must use `.github/agent-rules/navigator-mcp.md`.
 
 ## Supported Input Formats
 
