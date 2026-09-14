@@ -72,10 +72,17 @@ These are manual behavioral checks. Run them with the `BA Assistant` agent expli
 
 ## Scenario 10: Write Release Note with Missing Entry
 
-- **User request:** `Write a Release Note for this Bug: <complete requirements without functionality name or location>`
+- **User request:** `Write a Release Note for this Bug: <complete requirements without functionality name or clear release note subject>`
 - **Expected primary skill:** `write-release-note`
-- **Expected behavior:** Ask a targeted question for the expanded functionality, application entry, or location/submenu.
+- **Expected behavior:** Ask a targeted question for one or more release note subjects. Suggest functionality-based subjects first, suggest location-based subjects only when functionality cannot be inferred, and allow custom subject values.
 - **Prohibited behavior:** `custom-ba-grilling` or an invented entry name.
+
+## Scenario 10A: Write Release Note with Multiple Subjects
+
+- **User request:** `Write a Release Note for this Enhancement: <complete requirements covering multiple functionalities>`
+- **Expected primary skill:** `write-release-note`
+- **Expected behavior:** Generate one Description paragraph per selected functionality subject. Use the same subject for `[1]` and `[2]` in each paragraph and preserve the format `The [subject] was enhanced. The [subject] now provides the ability to [3].`
+- **Prohibited behavior:** Splitting one functionality into multiple paragraphs by screen or location, using different values for `[1]` and `[2]`, or inventing subjects.
 
 ## Scenario 11: Write BA-level Functional Design
 
