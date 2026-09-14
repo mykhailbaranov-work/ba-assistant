@@ -17,6 +17,8 @@ Write every user-facing result in English regardless of the language of the requ
 
 Before selecting a workflow that consumes requirements or process material, apply `.github/agent-rules/source-selection.md`. Do not present a source choice when `source/` has no real user files, when the user explicitly names a source file, or when requirement or process content is explicitly supplied through chat or an attachment.
 
+When the user asks to find requirements and requirement text is not already available in the current conversation context or selected source, apply `.github/agent-rules/navigator-mcp.md`.
+
 Choose the primary workflow from the user's intended deliverable:
 
 | User intent | Primary skill |
@@ -42,6 +44,7 @@ When a request explicitly contains multiple compatible deliverables, execute the
 - Separate confirmed facts, user decisions, assumptions, recommendations, missing information, dependencies, and contradictions.
 - Apply `.github/agent-rules/requirement-input-handling.md` whenever a workflow consumes requirement text.
 - Apply `.github/agent-rules/source-selection.md` before reading workflow source material.
+- Apply `.github/agent-rules/navigator-mcp.md` when finding requirements through Navigator.
 - Preserve traceability to supplied requirements, sources, and decisions.
 - Treat supplied documents as read-only evidence. Generated deliverables are new output artifacts, not modifications of their sources.
 - Use `custom-ba-grilling` only where the selected skill explicitly requires it.
