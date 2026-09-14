@@ -16,20 +16,22 @@ An Enhancement Release Note must contain `Description` and `Benefit Note`. An `I
 
 The Description should include:
 
-1. Identification of the enhanced functionality in the past tense, stating that it `was enhanced`. If the functionality cannot be inferred, use the applicable menu location, application entry, or location/submenu. Do not replace `was enhanced` with `has been improved`.
+1. Identification of the selected release note subject in the past tense, stating that it `was enhanced`. A subject may be a functionality name or a location/application entry. Do not replace `was enhanced` with `has been improved`.
 2. One or more past-tense sentences that clearly identify and describe the Enhancement.
 
 ### Format
 
 > The [1] was enhanced. The [2] now provides the ability to [3].
 
-- `[1]`: menu location or functionality name.
-- `[2]`: submenu, application location, or functionality name.
+- `[1]`: selected release note subject.
+- `[2]`: the same selected release note subject.
 - `[3]`: type of enhanced functionality.
 
-Use the same selected release note subject for `[1]` and `[2]`. Prefer functionality names as subjects. Use menu locations or application entries only when a functionality name cannot be inferred. If multiple functionalities are identified, write exactly one Description paragraph for each functionality. If one functionality includes multiple improvements or capabilities, still write one Description paragraph for that functionality. Do not split a functionality into separate paragraphs by screen or location.
+Use the same selected release note subject for `[1]` and `[2]`. Each subject has a subject type: `functionality` or `location`. For a single subject and its Description paragraph, use either a functionality subject or a location subject, not both. If multiple subjects are selected, write exactly one Description paragraph for each selected subject inside the same Release Note. Do not create separate Enhancement sections or separate Release Notes for multiple subjects. If one subject includes multiple improvements or capabilities, still write one Description paragraph for that subject.
 
-When subject clarification is needed, ask the user to choose one or more release note subjects. Each selected subject produces one Description paragraph. Suggested subjects should be functionality-based first and location-based only when functionality cannot be inferred. The user may provide custom subject values.
+When subject clarification is needed, ask the user to choose one or more release note subjects. Each selected subject produces one Description paragraph. When requirements support both functionality and location candidates, present both sets and label each candidate with its subject type. The user may provide custom subject values, but each custom subject must have a subject type. Use subject type only to select and validate the paragraph subject; do not include a separate subject type field in the final Release Note output.
+
+Benefit Note and Implementation Note remain single sections for the Release Note. Do not duplicate or split Benefit Note or Implementation Note by subject.
 
 ### Examples
 

@@ -19,9 +19,9 @@ Read and apply:
 - complete requirements on which the note is based;
 - one or more release note subjects.
 
-A release note subject is the exact functionality name to use in the Release Note Description. Use a location or application entry as the subject only when the functionality cannot be inferred from the requirements.
+A release note subject is the exact functionality name, location, or application entry to use in one Release Note Description paragraph. Each subject has a subject type: `functionality` or `location`. For a single subject, use either the functionality value or the location value, not both.
 
-If the requirements are absent, ask the user to provide them. If issue type or subject information is absent or ambiguous, ask a targeted question that lets the user choose one or more subjects. Suggest functionality-based subjects first. Suggest location-based subjects only when functionality-based subjects cannot be inferred. Allow the user to provide custom subject values. Do not invoke `custom-ba-grilling`.
+If the requirements are absent, ask the user to provide them. If issue type or subject information is absent or ambiguous, ask a targeted question that lets the user choose one or more subjects. When requirements support both functionality and location candidates, present both sets and label each candidate with its subject type. Allow the user to provide custom subject values and require a subject type for each custom subject. Do not invoke `custom-ba-grilling`.
 
 ## Workflow
 
@@ -29,7 +29,7 @@ If the requirements are absent, ask the user to provide them. If issue type or s
 2. Collect any missing required input through focused questions, including one or more release note subjects when needed.
 3. Read the guideline section for the confirmed issue type.
 4. Extract only supported user-visible behavior, scope, conditions, and business value.
-5. Write the Release Note using the required structure, selected subject values, and exact supplied terminology.
+5. Write one Release Note using the required structure, selected subject values, and exact supplied terminology. Put multiple selected subjects into separate Description paragraphs within the same Release Note. Do not create separate Release Notes or separate Enhancement sections for multiple subjects.
 6. Check the draft against every supplied requirement and identify any requirement that cannot be represented safely.
 
 ## Output
@@ -50,4 +50,5 @@ When required inputs remain unavailable, return only `Information Needed` and `R
 - Do not invoke `custom-ba-grilling`.
 - Do not invent benefits, navigation paths, names, permissions, or delivered behavior.
 - Do not finalize without requirements, issue type, and one or more release note subjects.
+- Do not output a separate subject type field in the final result.
 - Do not modify source documents.
