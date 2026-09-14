@@ -87,6 +87,39 @@ Internal supporting skill that creates DOCX through an available document-genera
 - If several files are requested, ask the user to select one.
 - If the selected file cannot be read, report the limitation and request another file or a readable export.
 
+## Navigator MCP Server
+
+BA Assistant users are expected to install the Navigator MCP server globally in their GitHub Copilot app accounts. The BA Assistant must not define, install, configure, or assume ownership of the Navigator MCP server, and must not add Navigator-specific MCP server configuration to the agent.
+
+Use Navigator to find requirements when the user asks to find requirements and the requirement text is not already available in the current conversation context or selected source. Requirement IDs from context without requirement text are not sufficient source content.
+
+When finding requirements by ID, use the complete requirement ID by default, including all prefixes and suffixes. Treat requirement IDs case-insensitively and return them in canonical uppercase form.
+
+Normalize partial DA LIS requirement IDs as follows:
+
+- `32212` -> `DA-LIS-FR-32212IS` and `DA-LIS-FR-32212IT`
+- `32212IS` -> `DA-LIS-FR-32212IS`
+- `32212IT` -> `DA-LIS-FR-32212IT`
+- `FR-32212IS` -> `DA-LIS-FR-32212IS`
+- `FR-32212IT` -> `DA-LIS-FR-32212IT`
+- `LIS-FR-32212IS` -> `DA-LIS-FR-32212IS`
+- `LIS-FR-32212IT` -> `DA-LIS-FR-32212IT`
+- Full IDs such as `DA-LIS-FR-32212IS` or `DA-LIS-FR-32212IT` -> use as provided, normalized to uppercase.
+
+If the user request contains both an ID-like value and keyword text, perform ID lookup first. If ID lookup finds a requirement, return it. If ID lookup creates both `IS` and `IT` candidates, use the keyword text only to rank or disambiguate the candidate results; do not replace ID lookup with keyword search.
+
+Use keyword search when the user explicitly asks to find requirements by keyword, or when the user asks to find requirements for, about, or related to a phrase without providing an ID-like value.
+
+Return requirement search results as a table with these columns:
+
+`ID | Name | Description | Rev | Status | Created | Modified`
+
+Use `Not available` for missing fields. Do not invent missing values.
+
+For keyword search, return the most relevant matches first. For ID search, return exact full ID matches first, then normalized candidate matches. Return at most 30 results. If more than 30 results are available, show the top 30 and ask the user to narrow the search.
+
+If Navigator is not available in the current Copilot session and requirement text is not available in the current conversation context or selected source, do not add Navigator configuration. State that Navigator is not available in the current Copilot session and that requirement text is not available in context/source.
+
 ## Document Outputs
 
 - Review results are always shown in chat. A file is created under `results/review_results_docs/` only after user confirmation.

@@ -14,6 +14,9 @@ Every use case must be documented using the following elements:
 
 ## 1.1 Alternative Flows
 
+- Create an alternative flow when the source requirements describe an option, configuration parameter, flag, or mode that changes system behavior by introducing a different sequence of actions, validation, external call, status, permission check, or result.
+- Treat conditions expressed as enabled/disabled options, turned on/off configuration parameters, marked/unmarked flags, selected modes, or threshold-based settings as candidates for alternative flows when they change how the system behaves.
+- Do not create alternative flows for simple field values, filters, sorting, labels, text options, or display preferences unless they introduce different system behavior.
 - Short alternative flows (1-3 steps) can be documented either in the body of the use case or as child use cases.
 - Longer alternative flows (more than 3 steps) shall be documented as child use cases.
 - For each alternative flow, clearly indicate that it is an alternative flow, and assign a sequence number and a name.
